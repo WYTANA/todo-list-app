@@ -15,14 +15,13 @@
   justify-content: center;
 }
 
-.Container {
-  /* background-color: yellow; */
+.container {
   width: 100%;
   max-width: 650px;
   margin-top: 50px;
 }
 
-.Header {
+.header {
  display: flex;
  justify-content:space-between;
  align-items: center;
@@ -30,10 +29,6 @@
  letter-spacing: 10px;
  font-size: 25px;
 }
-
-/* .Header img:hover {
-  
-} */
 
 /* continuous rotation */
 .rotate {
@@ -51,7 +46,7 @@
   }
 } 
 
-.Task-input {
+.task-input {
   background-color: hsl(235, 24%, 19%);
   width: 100%;
   height: 70px;
@@ -61,15 +56,23 @@
   align-items: center;
 }
 
-.Check {
+.check {
   flex-basis: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.Checkmark {
-  /* background-color: violet; */
+.checkmark img {
+  visibility: hidden;
+}
+
+/* conditional render */
+.checkmark.checked img, .checkmark:hover img{
+  visibility: visible;
+}
+
+.checkmark {
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -79,13 +82,22 @@
   align-items: center;
 }
 
-.New-Todo-Input {
+/* conditional render */
+.checkmark.checked {
+  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%)
+}
+
+.checkmark:hover {
+  background: linear-gradient(135deg, #55DDFF 0%, #C058F3 100%)
+}
+
+.new-todo-input {
   flex-grow: 1;
   display: flex;
   align-items: center;
 }
 
-#Todo-input {
+#todo-input {
   width: 100%;
   background-color: transparent;
   border: none;
@@ -96,12 +108,12 @@
 
 }
 
-.New-Todo-Input form {
+.new-todo-input form {
   flex-grow: 1;
   display: flex;
 }
 
-.Task-list-wrapper {
+.task-list-wrapper {
   margin-top: 30px;
   border-radius: 6px;
   background-color: hsl(235, 24%, 19%);
@@ -109,12 +121,12 @@
   overflow: hidden;
 }
 
-.Task-list {
+.task-list {
   width: 100%;
 
 }
 
-.Task-item {
+.task-item {
     width: 100%;
     background-color: hsl(235, 24%, 19%);
     height: 70px;
@@ -126,16 +138,22 @@
     transition-property: box-shadow, transform, border-color;
 }
 
-.Task-item:hover {
+.task-item:hover {
   transform: translateY(-2px);
   box-shadow: 0px 0px 7px 0px hsl(235, 21%, 11%);
 }
 
-.Task-text {
+.task-text {
   color: hsl(234, 39%, 85%);
 }
 
-.Task-items-info {
+/* conditional render */
+.task-text.checked {
+  color: hsl(233, 14%, 35%);
+  text-decoration: line-through;
+}
+
+.task-items-info {
   background-color: hsl(235, 24%, 19%);
   width: 100%;
   height: 70px;
@@ -148,11 +166,11 @@
   color: hsl(235, 14%, 35%);
 }
 
-.Items-status span {
+.items-status span {
   padding: 0 4px;
 }
 
-.Items-status span:hover, .items-clear:hover {
+.items-status span:hover, .items-clear:hover {
   color: hsl(220, 98%, 61%);
   cursor: pointer;
 }
@@ -160,3 +178,7 @@
 /* .items-clear {
 
 } */
+
+.items-status .active {
+  color: hsl(220, 98%, 61%);
+}

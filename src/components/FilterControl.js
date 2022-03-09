@@ -1,11 +1,21 @@
 import React from 'react'
 
-const FilterControl = () => {
+// accepting props from TaskList
+const FilterControl = ({ filterStatus, setFilterStatus, filteredTasks }) => {
+
+    // how can I track filter status? Move to App.js
+
+    console.log(filterStatus, filteredTasks)
+
+    const handleStatus = (status) => {
+        setFilterStatus(status)
+    }
+
     return (
-        <div className="Items-status">
-            <span>All</span>
-            <span>Active</span>
-            <span>Completed</span>
+        <div className="items-status">
+            <span onClick={() => handleStatus("all")}>All</span> |
+            <span onClick={() => handleStatus("active")}>Active</span> |
+            <span onClick={() => handleStatus("completed")}>Completed</span>
         </div>
     )
 }

@@ -2,28 +2,36 @@ import React from 'react'
 import FilterControl from './FilterControl'
 import Task from './Task'
 
-const TaskList = ({ tasks }) => {
+// accepting props from App
+const TaskList = ({ tasks, setTasks, filterStatus, setFilterStatus, filteredTasks }) => {
 
     return (
-        <div className="Task-list-wrapper">
-            <div className="Task-list">
-                {/* map through */}
+        <div className="task-list-wrapper">
+            <div className="task-list">
+                {/* map through the filtered tasks and keep original data*/}
                 {
-                    tasks.map((task) => {
+                    filteredTasks.map((task) => {
+                        // Task has these children
                         return <Task
                             key={task.id}
                             text={task.text}
                             status={task.status}
+                            tasks={tasks}
+                            setTasks={setTasks}
+                            task={task}
                         />
                     })
                 }
-
             </div>
-            <div className="Task-items-info">
-                <div className="Items-left">
-                    5 items left
+            <div className="task-items-info">
+                <div className="items-left">
+                    {filteredTasks.length} items here!🎉
                 </div>
-                <FilterControl />
+                <FilterControl
+                    filterStatus={filterStatus}
+                    setFilterStatus={setFilterStatus}
+                    filteredTasks={filteredTasks}
+                />
                 <div className="items-clear">
                     <span>Clear Completed</span>
                 </div>
